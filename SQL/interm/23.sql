@@ -1,0 +1,1 @@
+-- SELECT ProductID,ProductName,UnitsInStock,UnitsOnOrder FROM `products` WHERE UnitsInStock+UnitsOnOrder<ReorderLevel AND Discontinued=0;

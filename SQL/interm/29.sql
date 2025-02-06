@@ -1,0 +1,1 @@
+-- SELECT e.EmployeeID,e.LastName,o.OrderID,p.ProductName,od.Quantity FROM employees e INNER JOIN orders o ON o.EmployeeID=e.EmployeeID INNER JOIN orderdetails od ON od.OrderID=o.OrderID INNER JOIN products p ON p.ProductID=od.ProductID ORDER BY o.OrderID AND p.ProductID;

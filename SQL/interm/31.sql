@@ -1,0 +1,7 @@
+-- SELECT c.CustomerID 
+-- FROM customers c
+-- WHERE c.CustomerID NOT IN (
+--     SELECT o.CustomerID 
+--     FROM orders o 
+--     WHERE o.EmployeeID = 4
+-- );

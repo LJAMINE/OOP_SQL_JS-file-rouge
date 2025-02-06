@@ -1,0 +1,1 @@
+-- SELECT ShipCountry,AVG(Freight)as avgfri FROM `orders` WHERE ShippedDate > 2015 GROUP BY ShipCountry ORDER BY avgfri DESC LIMIT 3;

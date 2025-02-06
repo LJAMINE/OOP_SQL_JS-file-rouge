@@ -153,3 +153,34 @@ $cercle=new Cercle(2);
 
  $Carre=new Carre(2,2);
  echo $Carre->calculerSurface();
+
+
+ //Appeler le Constructeur Parent (parent::__construct)
+class user{
+protected $role;
+protected $name;
+protected $email;
+
+public   function __construct($role,$name,$email){
+    $this->name=$name;
+    $this->email=$email;
+}
+public function prese(){
+    echo "{$this->name}{$this->email}{$this->role}";
+        }
+}
+
+class Employe  extends user{
+
+    private $salaire;
+
+    public function __construct($name,$email,$role,$salaire){
+        parent::__construct($role,$name,$email);
+        $this->salaire=$salaire;
+    }
+
+    public function prese(){
+        parent::prese();
+echo "{$this->name}{$this->email}{$this->role}{$this->salaire}";
+    }
+}

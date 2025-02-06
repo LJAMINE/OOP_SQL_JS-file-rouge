@@ -1,0 +1,4 @@
+-- SELECT c.CustomerID,o.CustomerID
+-- FROM customers c
+-- LEFT JOIN  orders o   ON c.CustomerID=o.CustomerID
+-- WHERE o.CustomerID is NULL;
