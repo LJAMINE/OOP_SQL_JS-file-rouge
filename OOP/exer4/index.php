@@ -4,42 +4,93 @@ abstract class Personne
     protected $nom;
     protected $age;
 
-    abstract public function sePresenter();
+    public function __construct($nom, $age)
+    {
+        $this->age = $age;
+        $this->nom = $nom;
+    }
+
+    abstract public function pres();
 }
 
-class  Lecteur  extends Personne
+class Lecteur extends Personne
 {
-    public $livresEmpruntes = [];
 
-    public function sePresenter()
+    public $livresEmpruntes = [];
+    public function pres()
     {
-        echo "Je suis {$this->nom} un lecteur de {$this->age}ans
-";
+        echo "Je suis {$this->nom}, un lecteur de {$this->age} ans";
     }
+
     public function emprunterLivre($livre)
     {
-        echo    $this->livresEmpruntes[] = $livre;
+        $this->livresEmpruntes[] = $livre;
     }
-    public function retournerLivre(string $livre): void
+    public function retournerLivre($livre)
     {
-        $index = array_search($livre, $this->livresEmpruntes);
-        if ($index !== false) {
-            unset($this->livresEmpruntes[$index]);
-            $this->livresEmpruntes = array_values($this->livresEmpruntes); 
-            echo " {$this->nom} a  le livre {$livre}.<br>";
+
+        $book = array_search($livre, $this->livresEmpruntes);
+
+        if ($book) {
+            unset($this->livresEmpruntes[$book]);
         } else {
-            echo " Le livre '{$livre}'pass dans les emprunts.<br>";
+            echo "no book is found";
         }
     }
-    public function afficherEmprunts()
+
+    public  function afficherEmprunts()
     {
-        for ($i = 0; $i < count($this->livresEmpruntes); $i++) {
-            print_r($this->livresEmpruntes[$i]) ;
+        foreach ($this->livresEmpruntes as $books) {
+            echo $books;
         }
     }
 }
 
-$new = new Lecteur();
-  $new->emprunterLivre("said");
-$new->retournerLivre("said");
-$new->afficherEmprunts();
+
+class Bibliothecaire extends Personne
+{
+
+    public $special;
+    public $listeLecteurs = [];
+    public static $nombreLecteurs = 0;
+    public function pres()
+    {
+        echo "Je suis {$this->nom}, un bibliothécaire qui gère la bibliothèque";
+    }
+
+    public function inscrireLecteur(Lecteur $lecteur)
+    {
+        $this->listeLecteurs[] = $lecteur;
+        self::$nombreLecteurs++;
+    }
+    public function afficherLecteurs()
+    {
+        foreach ($this->listeLecteurs as $key) {
+           $key->pres();
+        }
+    }
+}
+
+
+class ResponsableBibliotheque  extends Bibliothecaire{
+    public function sepre(){
+        parent::pres();
+         echo "Je suis {$this->nom}, un bibliothécaire supervise toute la gestion ";
+
+    }
+}
+$bookss = new Lecteur("amine", 13);
+$bookss2 = new Lecteur("said", 22);
+$bookss3 = new Lecteur("aaaa", 22);
+
+$beblio=new Bibliothecaire("zor",120);
+$beblio->inscrireLecteur($bookss);
+$beblio->inscrireLecteur($bookss2);
+$beblio->inscrireLecteur($bookss3);
+$beblio->afficherLecteurs();
+// $bookss->emprunterLivre("book1");
+// $bookss->emprunterLivre("book2");
+// $bookss->emprunterLivre("book3");
+// $bookss->retournerLivre("book2");
+echo $beblio::$nombreLecteurs;
+$bookss->afficherEmprunts();
