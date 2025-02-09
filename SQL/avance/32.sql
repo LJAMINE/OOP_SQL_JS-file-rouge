@@ -1,0 +1,15 @@
+-- SELECT
+--     c.CustomerID,
+--     o.OrderID,
+--     SUM(od.UnitPrice * od.Quantity) AS TotalOrderAmount
+-- FROM
+--     customers c
+--     INNER JOIN orders o ON o.CustomerID = c.CustomerID
+--     INNER JOIN orderdetails od ON od.OrderID = o.OrderID
+-- WHERE
+--     OrderDate >= '20160101'
+--     AND OrderDate < '20170101'
+-- GROUP BY
+--     o.OrderID
+-- HAVING
+--     TotalOrderAmount > 10000;
