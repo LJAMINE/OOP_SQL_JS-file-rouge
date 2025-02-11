@@ -3,7 +3,7 @@
 function compterOccurrences($tableau, $valeur) {
  $count=0;
 for ($i=0; $i < count($tableau); $i++) {  
-if ($tableau[$i]===$valeur) {
+if ($tableau[$i]==$valeur) {
     $count++;
 } else {
 }

@@ -47,7 +47,7 @@ echo "La voiture démarre avec un moteur silencieux". "<br>";
 
 }
 
-final class Moto2 extends VehiculeMotorise{
+ final class Moto2 extends VehiculeMotorise{
     private $typeGuidon;
 
     public function __construct($marque, $modele, $vitesseMax, $typeGuidon)
@@ -70,6 +70,8 @@ final class Moto2 extends VehiculeMotorise{
              }
 }
 
+
+ 
 
 interface Transportable {
     public function charger();

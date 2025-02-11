@@ -1,16 +1,16 @@
 <?php
 
 function inverseChaine($chaine) {
-$motInvers="";
+$motiinvers="";
 
 $motlength=strlen($chaine);
 
 for ($i=$motlength-1; $i>=0; $i--) { 
 
-    $motInvers.=$chaine[$i];
+    $motiinvers = $motiinvers . $chaine[$i];
 
 }
-return $motInvers;
+return $motiinvers;
 }
 $mott="azer";
 echo inverseChaine($mott);
