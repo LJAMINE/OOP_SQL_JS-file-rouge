@@ -1,19 +1,17 @@
-<?php 
+<?php
 
-function compterOccurrences($tableau, $valeur) {
- $count=0;
-for ($i=0; $i < count($tableau); $i++) {  
-if ($tableau[$i]==$valeur) {
-    $count++;
-} else {
+function compterOccurrences($tableau, $valeur)
+{
+    $count = 0;
+    for ($i = 0; $i < count($tableau); $i++) {
+        if ($valeur == $tableau[$i]) {
+            $count++;
+        } else {
+
+        }
+    }
+    echo $count;
 }
 
-}  
-echo $count;
-
-}
-$tablle=[2,3,2,2,3,2];
-compterOccurrences($tablle,3);
-
-
-?>
+$tabbbble=[1,2,1];
+compterOccurrences($tabbbble,valeur: 1);
