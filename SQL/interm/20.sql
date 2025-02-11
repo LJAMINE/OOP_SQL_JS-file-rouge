@@ -1,1 +1,8 @@
--- SELECT COUNT( c.CategoryID) , c.CategoryName FROM categories c INNER JOIN products p ON c.CategoryID=p.CategoryID GROUP by c.CategoryName;
+-- SELECT
+--     COUNT(c.CategoryID),
+--     c.CategoryName
+-- FROM
+--     categories c
+--     INNER JOIN products p ON c.CategoryID = p.CategoryID
+-- GROUP by
+--     c.CategoryName;

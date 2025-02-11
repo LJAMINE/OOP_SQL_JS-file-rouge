@@ -13,11 +13,11 @@ abstract class Personnne
     abstract public function sePresenter();
 }
 
-class Leccteur extends Personnne
+class Leccteurs extends Personnne
 {
     public $livreeempruntes = [];
 
-    public function emprunterLivre($livre)
+    public function emprunter_Livre($livre)
     {
         $this->livreeempruntes[] = $livre;
     }
@@ -25,14 +25,34 @@ class Leccteur extends Personnne
     {
         echo  "Je suis {$this->nom}, un lecteur de {$this->age} ans.";
     }
-    public function Retourner($livre){
-        $boook=array_search($livre,$this->livreeempruntes);
+    public function Retourner_Livre($livre)
+    {
+        $index = array_search($livre, $this->livreeempruntes);
 
-        if ($boook) {
+        if ($index!==false) {
+            unset($this->livreeempruntes[$index]);
+            $this->livreeempruntes = array_values($this->livreeempruntes);
 
         } else {
-            # code...
+            echo "livre pas ici ";
         }
-        
+    }
+    public function afficherEmprunts()
+    {
+        foreach ($this->livreeempruntes as $livre1) {
+
+            echo $livre1;
+        }
+    }
+    public function __tostring()
+    {
+        return "Lecteur {$this->nom},{$this->age}, ans";
     }
 }
+
+
+$leecteur = new Leccteurs("amineaa", 22);
+$leecteur->emprunter_Livre("book1");
+
+$leecteur->Retourner_Livre("book1");
+$leecteur->afficherEmprunts();

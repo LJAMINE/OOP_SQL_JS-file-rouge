@@ -1,1 +1,11 @@
--- SELECT COUNT(c.CustomerID) as totall,c.City,c.Country FROM `customers` c GROUP by c.City,c.Country ORDER BY totall DESC;
+-- SELECT
+--     COUNT(c.CustomerID) as totall,
+--     c.City,
+--     c.Country
+-- FROM
+--     `customers` c
+-- GROUP by
+--     c.City,
+--     c.Country
+-- ORDER BY
+--     totall DESC;
