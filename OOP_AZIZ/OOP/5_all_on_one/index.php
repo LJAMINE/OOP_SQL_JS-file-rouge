@@ -1,58 +1,115 @@
 <?php
-
-abstract class Personnne
+abstract class Personnne3
 {
-    protected string $nom;
-    protected int $age;
+    protected $nom;
+    protected $age;
 
-    public function __construct($nom, $age)
-    {
-        $this->age = $age;
-        $this->nom = $nom;
+    public function __construct($nom,$age){
+        $this->nom=$nom;
+        $this->age=$age;
     }
-    abstract public function sePresenter();
+
+    abstract public function sepresenter3();
 }
 
-class Leccteurs extends Personnne
+class Leecteuur2 extends Personnne3
 {
-    public $livreeempruntes = [];
 
-    public function emprunter_Livre($livre)
+    public $livresEmpruntes = [];
+    public function sepresenter3()
     {
-        $this->livreeempruntes[] = $livre;
+        echo  "Je suis {$this->nom} un lecteur de {$this->age} ans.";
     }
-    public function sePresenter()
+
+    public function emprunterLivre3($livre)
     {
-        echo  "Je suis {$this->nom}, un lecteur de {$this->age} ans.";
+
+        $this->livresEmpruntes[] = $livre;
     }
-    public function Retourner_Livre($livre)
+    public function afficherEmprunts3()
     {
-        $index = array_search($livre, $this->livreeempruntes);
 
-        if ($index!==false) {
-            unset($this->livreeempruntes[$index]);
-            $this->livreeempruntes = array_values($this->livreeempruntes);
-
-        } else {
-            echo "livre pas ici ";
+        foreach ($this->livresEmpruntes as $livrrre) {
+            echo $livrrre;
         }
     }
-    public function afficherEmprunts()
+    public function retournerLivre($livre)
     {
-        foreach ($this->livreeempruntes as $livre1) {
 
-            echo $livre1;
+        for ($i = 0; $i < count(value: $this->livresEmpruntes); $i++) {
+
+            $index = array_search($livre, $this->livresEmpruntes);
+
+            if ($index) {
+
+                unset($this->livresEmpruntes[$index]);
+                echo "Livre retourne";
+            } else {
+                echo "pas ici";
+            }
         }
     }
     public function __tostring()
     {
-        return "Lecteur {$this->nom},{$this->age}, ans";
+        return  "Lecteur {$this->nom}, {$this->age} ans";
     }
 }
 
 
-$leecteur = new Leccteurs("amineaa", 22);
-$leecteur->emprunter_Livre("book1");
+class Bbebliothique extends Personnne3
+{
+    protected $speciality;
+    public $listeLLecteurs = [];
+    static public $nombreLecteeurs = 0;
+    public function sepresenter3()
+    {
+        echo  "Je suis {$this->nom} un bibliothécaire qui gère la bibliothèque. {$this->speciality}";
+    }
 
-$leecteur->Retourner_Livre("book1");
-$leecteur->afficherEmprunts();
+    public  function inscrireLecteur(Leecteuur2 $lectrur)
+    {
+        if (array_search($lectrur, $this->listeLLecteurs)) {
+            return;
+        } else {
+            $this->listeLLecteurs[] = $lectrur;
+        }
+    }
+    public function afficherLecteurs()
+    {
+        foreach ($this->listeLLecteurs as $key) {
+            echo $key;
+        }
+    }
+}
+
+
+class ResponsableBibliotheque3 extends Bbebliothique{
+    public function sepresenter3(){
+        parent::sepresenter3();
+        echo  "Je suis {$this->nom} e responsable de la bibliothèque, supervise toute la gestion.";
+    }
+    public  function __clone(){
+        $this->nom=$this->nom . '_clone now';
+        $this->listeLLecteurs=[];
+        echo "responsable est clone {$this->nom}";
+    }
+} 
+// $newL1 = new Leecteuur2("amine",12);
+// $newL2 = new Leecteuur2("saiid",22);
+// $newL3 = new Leecteuur2("aaaa",22);
+// $bib=new Bbebliothique("beblio1",100);
+// $bib->inscrireLecteur($newL1);
+// $bib->inscrireLecteur($newL2);
+// $bib->inscrireLecteur($newL3);
+// $bib->inscrireLecteur($newL3);
+// $bib->afficherLecteurs();
+
+$resp1=new ResponsableBibliotheque3("respo1",10);
+$resp2=clone $resp1;
+$resp1->sepresenter3();
+$resp2->sepresenter3();
+// $newL1->emprunterLivre3("book1");
+// $newL1->emprunterLivre3("book2");
+// $newL1->afficherEmprunts3();
+// $newL1->retournerLivre("book2");
+// $newL1->afficherEmprunts3();
