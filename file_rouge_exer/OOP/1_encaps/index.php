@@ -1,39 +1,51 @@
 <?php
 
-class CmptBancaire
+class CMPTE1
 {
-    private int $solde;
+    private $solde;
 
-
-    public function getsolde()
-    {
-        return  $this->solde;
-    }
     public function __construct($solde)
+    {
+
+        if ($solde < 0) {
+            throw new Exception("negative", 1);
+        } else {
+            $this->solde = $solde;
+        }
+    }
+
+    public function getSolde()
+    {
+        return $this->solde;
+    }
+    public function SetSolde($solde)
     {
         $this->solde = $solde;
     }
 
-    public function depose($montant)
-    {
-        $this->solde += $montant;
-    }
-
-    public function retire($montant)
+    public function retires($montant)
     {
 
-        if ($this->solde < $montant) {
-            throw new Exception("Error montant bigger", 1);
+        if ($montant > $this->solde) {
+
+            throw new Exception("Error Processing Request", 1);
         } else {
             $this->solde -= $montant;
         }
     }
+
+    public function depos($montant)
+    {
+        $this->solde += $montant;
+    }
 }
 
-$price=new CmptBancaire(100);
-$price->depose(100);
-echo $price->getsolde();
+$salaire=new CMPTE1(6);
+echo $salaire->getSolde();
 
-$price->retire(100);
+$salaire->depos(100);
+echo $salaire->getSolde();
 
-echo $price->getsolde();
+
+$salaire->retires(106);
+echo $salaire->getSolde();
