@@ -1,0 +1,1 @@
+-- SELECT AVG(orders.Freight) as avr,orders.ShipCountry FROM orders GROUP BY orders.ShipCountry ORDER BY avr DESC LIMIT 3;
