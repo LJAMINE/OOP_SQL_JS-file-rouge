@@ -1,0 +1,11 @@
+.modals{
+    height: 300px;
+    width: 300px;
+    display:none;
+    position:relative;
+    left:30%;
+
+
+    background-color:red;
+
+}
