@@ -1,29 +1,20 @@
-function walkdog() {
+function call() {
 return new Promise((resolve,reject)=>{
     setTimeout(() => {
-        resolve("you walk the dog ");
-      }, 1500);
+        console.log("good ");
+      }, 500);
 
 })
 }
 
-// walkdog();
+// call();
 
-function cleanKitchen() {
- return new Promise((resolve,reject)=>{
-    setTimeout(() => {
-        resolve("you clean the kitchen  ");
-      }, 2500);
- })
-}
+call().then((result)=>{
+  console.log(result)
+})
 
-// cleanKitchen()
- 
-function taketrash() {
- return new Promise((resolve,reject)=>{
-    setTimeout(() => {
-        resolve("you take the trash ");
-      }, 500);
- })
-}
+
+// moyenne
+
+
 
