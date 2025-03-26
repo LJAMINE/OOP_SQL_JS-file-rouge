@@ -36,7 +36,6 @@ let arr=[1,2,3]
 console.log(appliquer(3,arr))
 
 
-console.log('qgqqggqgqggq')
 
 
 
@@ -51,3 +50,40 @@ let newwVar=arrayPair.filter((n)=>{
 
 console.log(newwVar)
 
+
+// Écrire reduire(tableau, f, initial) pour une réduction.
+
+
+reduireArray=[1,2,3]
+
+let arro=reduireArray.reduce(function reduirre(a,b) {
+    return a+b;
+})
+
+console.log(arro)
+
+// Créer estPositif(n) fléchée retournant true si n > 0.
+
+
+let estPositiv=n=>n>0
+
+console.log(estPositiv(1))
+
+// Difficiles
+
+
+// reduce somme
+
+
+let newasrr=[1,2,4]
+
+let sommes=newasrr.reduce((a,c) => {
+  return a+c
+},0)
+
+console.log(sommes)
+
+
+// Créer trierPar(f, tableau) triant selon f.
+
+ 
