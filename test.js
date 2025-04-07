@@ -208,26 +208,77 @@ console.log(val);
 
 // console.log(newarrayboth)
 
+//somme des indices
+
 let first = [1, 2, 3, 4, 5, 6];
 let second = [3, 6, 3];
 
-let solution = (a, b) => {
-  let arrayAlenght = a.length;
-  let arrayBlenth = b.length;
+let aaraynew = [];
 
-  let alllength = arrayAlenght - arrayBlenth;
+let maxLenght = first.length > second.length ? first.length : second.length;
 
-  for (let i = 0; i < Math.abs(alllength); i++) {
-    if (alllength > 0) {
-      b.push(0);
+for (let i = 0; i < maxLenght; i++) {
+  if (first[i] && second[i]) {
+    aaraynew.push(first[i] + second[i]);
+  } else if (second[i]) {
+    aaraynew.push(second[i]);
+  } else if (first[i]) {
+    aaraynew.push(first[i]);
+  }
+}
+
+console.log(aaraynew);
+
+// biggest array
+
+let biggestarray = ["aaaaaaa", "a", "a"];
+
+function bigarray(biggestarray) {
+  let max = biggestarray[0];
+
+  for (let i = 0; i < biggestarray.length; i++) {
+    if (biggestarray[i].length > max.length) {
+      max = biggestarray[i];
     }
   }
+  return max;
+}
 
-  let arrayHmza = [];
-  for (let j = 0; j < arrayAlenght; j++) {
-    arrayHmza.push(a[j] + b[j]);
+console.log(bigarray(biggestarray));
+
+let amineArray = biggestarray.reduce((a, b) => {
+  if (a.length > b.length) {
+    return a;
+  } else {
+    return b;
   }
-  return arrayHmza;
-};
+});
+console.log(amineArray);
 
-console.log(solution(first, second));
+let pairarray1 = [1, 9, 4];
+let pairarray2 = [6, 3, 2];
+
+let mergearray = [];
+
+for (let i = 0; i < pairarray1.length; i++) {
+  mergearray.push(pairarray1[i]);
+}
+for (let i = 0; i < pairarray2.length; i++) {
+  mergearray.push(pairarray2[i]);
+}
+
+console.log(mergearray);
+
+for (let i = 0; i < mergearray.length; i++) {
+  for (let j = i; j < mergearray.length; j++) {
+    
+    let temp;
+    if (mergearray[i] > mergearray[j + 1]) {
+      temp = mergearray[i];
+      mergearray[i] = mergearray[j + 1];
+      mergearray[j + 1] = temp;
+    }
+  }
+}
+
+console.log(mergearray);
