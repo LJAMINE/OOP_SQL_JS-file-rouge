@@ -131,18 +131,18 @@ $tableas = [2, 3, 11, 1, 12];
 
 //  8. Trouver le Deuxième Plus Grand Nombre dans un Tableau
 
-function deuxiemeMax($tableau) {
-    $max=$tableau[0];
-    $max2=$tableau[0];
+function deuxiemeMax($tableau)
+{
+    $max = $tableau[0];
+    $max2 = $tableau[0];
 
-    for ($i=0; $i <count($tableau) ; $i++) { 
+    for ($i = 0; $i < count($tableau); $i++) {
 
-        if ($max<$tableau[$i]) {
-            $max2=$max;
-            $max=$tableau[$i];
-        }elseif ($tableau[$i]>$max2 && $tableau[$i]!==$max) {
-            $max2=$tableau[$i];
-
+        if ($max < $tableau[$i]) {
+            $max2 = $max;
+            $max = $tableau[$i];
+        } elseif ($tableau[$i] > $max2 && $tableau[$i] !== $max) {
+            $max2 = $tableau[$i];
         }
     }
     return $max2;
@@ -150,4 +150,35 @@ function deuxiemeMax($tableau) {
 
 $tableas = [2, 3, 111, 1, 12];
 
-echo deuxiemeMax($tableas);
+// echo deuxiemeMax($tableas);
+
+
+// 9. Fusionner Deux Tableaux Triés
+
+$tab1 = [1, 4, 2];
+$tab2 = [7, 9, 3, 0];
+$newTab = [];
+
+for ($i = 0; $i < count($tab1); $i++) {
+    $newTab[] = $tab1[$i];
+}
+
+for ($j = 0; $j < count($tab2); $j++) {
+    $newTab[] = $tab2[$j];
+}
+
+
+for ($i = 0; $i < count($newTab) - 1; $i++) {
+
+    for ($j = 0; $j < count($newTab) - $i - 1; $j++) {
+
+        if ($newTab[$j] > $newTab[$j + 1]) {
+            $swap = $newTab[$j];
+            $newTab[$j] = $newTab[$j + 1];
+            $newTab[$j + 1] = $swap;
+        }
+    }
+}
+
+
+print_r($newTab);
