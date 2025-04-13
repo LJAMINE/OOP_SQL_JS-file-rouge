@@ -182,3 +182,6 @@ for ($i = 0; $i < count($newTab) - 1; $i++) {
 
 
 print_r($newTab);
+
+// 🔴 Niveau 3 : Avancé
+
