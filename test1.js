@@ -427,7 +427,7 @@ for (let i = 0; i < students.length; i++) {
     somme += students[i].grades[j];
   }
   avg = somme / students[i].grades.length;
-  console.log(avg);
+  // console.log(avg);
 }
 
 // 6. Find the Oldest Person
@@ -443,7 +443,7 @@ for (let i = 0; i < arraypeople.length; i++) {
     max = arraypeople[i].age;
   }
 }
-console.log(max);
+// console.log(max);
 
 // 7. Merge Arrays of Objects
 
@@ -466,7 +466,7 @@ for (let i = 0; i < list2.length; i++) {
   stock.push(list2[i]);
 }
 
-console.log(stock);
+// console.log(stock);
 
 // 8. Object of Arrays → Array of Strings
 
@@ -486,3 +486,39 @@ for (const country in cities) {
   newarraystore.push(`${cities[country][i]} ${country}` )
  }
 }
+
+
+
+ let newArrays=[
+  { name: 'Alice', age: 21 },
+  { name: 'Bob', age: 25 },
+  { name: 'Charlie', age: 21 },
+  { name: 'David', age: 25 },
+  { name: 'Eve', age: 30 }
+]
+
+
+let arr21=[]
+let arr25=[]
+let arr30=[]
+
+for (let i = 0; i < newArrays.length; i++) {
+
+  if (newArrays[i].age===21) {
+    arr21.push(newArrays[i])
+  }else if (newArrays[i].age===25) {
+    arr25.push(newArrays[i])
+    
+  }else{
+    arr30.push(newArrays[i])
+
+  }
+  
+}
+
+console.log(arr21)
+console.log(arr25)
+console.log(arr30)
+
+
+const items = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
