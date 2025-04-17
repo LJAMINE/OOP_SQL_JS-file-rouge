@@ -521,4 +521,11 @@ console.log(arr25)
 console.log(arr30)
 
 
-const items = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+// const fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+
+
+// let newcount={}
+
+// for (const key in object) {
+
+// }
