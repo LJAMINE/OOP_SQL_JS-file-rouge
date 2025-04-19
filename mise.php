@@ -83,82 +83,144 @@
 // ------------------------------------------------------------
 
 
-class EmployeTEST
+// class EmployeTEST
+// {
+
+//     public $name;
+//     public $prenom;
+
+//     public $listeJob = [];
+
+//     public function __construct($name, $prenom)
+//     {
+//         $this->name = $name;
+//         $this->prenom = $prenom;
+//     }
+
+//     public function ajouterJob(JobsTEST $job)
+//     {
+//         $this->listeJob[] = $job;
+//     }
+//     public function getlastJob()
+//     {
+//         foreach ($this->listeJob as $item) {
+
+//             if ($item->endyear != null && $item->endyear > 2025) {
+//                 return $item;
+//             }
+//         }
+//     }
+
+//     public function get2yearexperience()
+//     {
+//         foreach ($this->listeJob as $job) {
+//             if ($job->endyear - $job->startyear = 2) {
+//                 return $job;
+//             }
+//         }
+//     }
+// }
+
+
+// class JobsTEST
+// {
+//     public $title;
+//     public $startyear;
+//     public $endyear;
+
+//     public $type;
+//     public function __construct($title, $startyear, $endyear, $type)
+//     {
+//         $this->title = $title;
+//         $this->startyear = $startyear;
+//         $this->endyear = $endyear;
+//         $this->type = $type;
+//     }
+// }
+
+
+
+// $newJob1 = new JobsTEST("formateur", 1999, 2000, "cdi");
+// $newJob3 = new JobsTEST("PEINTRE", 2022, 2026, "cdi");
+// $newJob2 = new JobsTEST("ostad", 2000, 2022, "cdi");
+
+
+
+
+// $employe = new EmployeTEST("amine", "lmgrmj");
+// $employe->ajouterJob($newJob1);
+// $employe->ajouterJob($newJob2);
+// $employe->ajouterJob($newJob3);
+
+
+
+
+//  print_r ($employe->get2yearexperience());
+
+
+
+
+
+// print_r($employe->getlastJob());
+
+
+
+
+
+abstract class LibraryItem
 {
-
-    public $name;
-    public $prenom;
-
-    public $listeJob = [];
-
-    public function __construct($name, $prenom)
-    {
-        $this->name = $name;
-        $this->prenom = $prenom;
-    }
-
-    public function ajouterJob(JobsTEST $job)
-    {
-        $this->listeJob[] = $job;
-    }
-    public function getlastJob()
-    {
-        foreach ($this->listeJob as $item) {
-
-            if ($item->endyear != null && $item->endyear > 2025) {
-                return $item;
-            }
-        }
-    }
-
-    public function get2yearexperience()
-    {
-        foreach ($this->listeJob as $job) {
-            if ($job->endyear - $job->startyear = 2) {
-                return $job;
-            }
-        }
-    }
-}
-
-
-class JobsTEST
-{
-    public $title;
-    public $startyear;
-    public $endyear;
-
-    public $type;
-    public function __construct($title, $startyear, $endyear, $type)
+    protected $title;
+    protected $author;
+    protected $year;
+    public function __construct($title, $author, $year)
     {
         $this->title = $title;
-        $this->startyear = $startyear;
-        $this->endyear = $endyear;
-        $this->type = $type;
+        $this->author = $author;
+        $this->year = $year;
     }
+    abstract public function displayInfo();
+}
+
+class Book extends LibraryItem
+{
+
+    public function __construct($title, $author, $year,$genre){
+        parent::__construct($title, $author, $year);
+        $this->genre=$genre;
+    }
+
+    public $genre;
+    public function displayInfo()
+    {
+        echo "{$this->title}{$this->author}{$this->year}{$this->genre}";
+    }
+    
+}
+class DVD extends LibraryItem implements Borrowable
+{
+    public function __construct($title, $author, $year,$duration){
+        parent::__construct($title, $author, $year);
+        $this->duration=$duration;
+    }
+
+    public $duration;
+    public function displayInfo()
+    {
+        echo "{$this->title}{$this->author}{$this->year}{$this->duration}";
+    }
+
+    public function borrowItem($name){
+
+    }
+    public function returnItem(){
+        
+    }
+    
 }
 
 
+interface Borrowable{
+    public function borrowItem($name);
+    public function returnItem();
+}
 
-$newJob1 = new JobsTEST("formateur", 1999, 2000, "cdi");
-$newJob3 = new JobsTEST("PEINTRE", 2022, 2026, "cdi");
-$newJob2 = new JobsTEST("ostad", 2000, 2022, "cdi");
-
-
-
-
-$employe = new EmployeTEST("amine", "lmgrmj");
-$employe->ajouterJob($newJob1);
-$employe->ajouterJob($newJob2);
-$employe->ajouterJob($newJob3);
-
-
-
-
- print_r ($employe->get2yearexperience());
-
-
-
-
-
-print_r($employe->getlastJob());

@@ -44,3 +44,7 @@ $dog = new Dog("Rex", 5);
 $dog->makeSound();
 $dog->fetchStick();
 $dog->afficher();
+
+
+
+

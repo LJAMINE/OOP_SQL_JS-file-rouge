@@ -345,15 +345,77 @@
 // }
 
 
-const fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+// const fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
 
 
-let newcount={}
+// let newcount={}
 
-for (const fruit in fruits) {
+// for (const fruit in fruits) {
 
-  
+
+// }
+
+
+
+
+
+// Exercise 1: Create an array with five fruits, then add two more fruits at the end,
+// and remove the first fruit. Return the final array.
+
+// const fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
+
+
+
+
+
+
+
+// Exercise 1: Use map to create a new array where each number is multiplied by 2
+
+// let pairarray1 = [1, 9, 4];
+
+// function doubleNumbers(numbers) {
+
+//   let newarr=numbers.map((item)=>{
+//     return item*2
+//   })
+//   console.log(newarr)
+// }
+
+// console.log(doubleNumbers(pairarray1))
+
+
+
+// Exercise 2: Use filter and map together to get the names of people over 18
+
+let aer=([
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 17 },
+  { name: "Charlie", age: 30 },
+  { name: "David", age: 16 }
+]);
+
+function getAdultNames(people) {
+return people.filter(person=>person.age>18).map((person=>person.name))
 }
 
+console.log(getAdultNames(aer))
+
+// Exercise 3: Use reduce to find the most expensive product in an array
+
+let nes=[
+  { name: "Laptop", price: 1200 },
+  { name: "Phone", price: 800 },
+  { name: "TV", price: 1500 },
+  { name: "Headphones", price: 200 }
+]
+
+function findMostExpensive(products) {
+ return products.reduce((a,b)=>{
+  return a.price>b.price?a:b
+ })
+}
+
+console.log(findMostExpensive(nes))
 
 
