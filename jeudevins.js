@@ -355,7 +355,7 @@ function restockProduct(id) {
   return false;
 }
 
-console.log(restockProduct(102));
+// console.log(restockProduct(102));
 // Add New Product-------------------------------------------------------
 // Write a function addNewProduct(name, price, categories) that:
 
@@ -379,8 +379,8 @@ function addNewProduct(name, price, categories) {
   return products;
 }
 
-console.log(addNewProduct("azer", 2, ["brocode", "sami"]));
-console.log(addNewProduct("azer", 4, ["brocode", "sami"]));
+// console.log(addNewProduct("azer", 2, ["brocode", "sami"]));
+// console.log(addNewProduct("azer", 4, ["brocode", "sami"]));
 
 // Get All Categories---------------------------------------------------------------------------
 // Write a function getAllCategories() that returns an array of all unique categories (no duplicates)
@@ -393,10 +393,10 @@ function getAllCategories() {
       }
     }
   }
-  return newtest
+  return newtest;
 }
 
-console.log(getAllCategories())
+// console.log(getAllCategories())
 
 // Apply Discount
 // Write a function applyDiscount(category, discountPercent) that:
@@ -405,27 +405,195 @@ console.log(getAllCategories())
 
 // Returns count of discounted products
 
-
 function applyDiscount(category, discountPercent) {
-    for (let i = 0; i < products.length; i++) {
-
-        for (let j = 0; j < products[i].categories.length; j++) {
-            if (products[i].categories[j]===category) {
-            products[i].price=products[i].price*discountPercent
-            }            
-        }
+  for (let i = 0; i < products.length; i++) {
+    for (let j = 0; j < products[i].categories.length; j++) {
+      if (products[i].categories[j] === category) {
+        products[i].price = products[i].price * discountPercent;
+      }
     }
-    return products
+  }
+  return products;
 }
 
-console.log(applyDiscount("sami",2))
+// console.log(applyDiscount("sami",2))
 
-// Example Usage
-// javascript
-// console.log(getAvailableProducts());
-// console.log(getProductsByCategory("electronics"));
-// console.log(restockProduct(102)); // true if was out of stock
-// console.log(addNewProduct("Mouse Pad", 12.99, ["accessories"]));
-// console.log(getAllCategories());
-// console.log(applyDiscount("electronics", 10)); // 10% discount
-// You can now implement these functions. Would you like me to review your solutions when you're done?
+// Write a function countEven(numbers) that returns how many even numbers are in the array------------------------------
+const numbers = [3, 1, 8, 12, 5, 9, 10];
+
+function countEven(num) {
+  let count = 0;
+  for (let i = 0; i < num.length; i++) {
+    if (num[i] % 2 === 0) {
+      count++;
+    }
+  }
+  return count;
+}
+// console.log(countEven(numbers));
+
+// Write a function findCheap(products, maxPrice) that returns an array of products cheaper than maxPrice--------------------------
+
+const products1 = [
+  { id: 1, name: "Laptop", price: 999 },
+  { id: 2, name: "Mouse", price: 25 },
+  { id: 3, name: "Keyboard", price: 75 },
+];
+
+function findCheap(productstest, max) {
+  let newsARRAY = [];
+  // let max=productstest[0].price
+  for (let i = 0; i < productstest.length; i++) {
+    if (productstest[i].price < max) {
+      newsARRAY.push(productstest[i]);
+    }
+  }
+  return newsARRAY;
+}
+
+// console.log(findCheap(products1, 333));
+
+// Write a function checkStock(inventory) that returns an array of product names with stock > 0----------------------------------------
+
+const inventory = [
+  { id: 1, name: "Apples", stock: 50 },
+  { id: 2, name: "Bananas", stock: 25 },
+  { id: 3, name: "Oranges", stock: 0 },
+];
+
+function checkStock(inventory) {
+  let stocks = [];
+  for (let i = 0; i < inventory.length; i++) {
+    if (inventory[i].stock > 0) {
+      stocks.push(inventory[i].name);
+    }
+  }
+  return stocks;
+}
+
+console.log(checkStock(inventory));
+
+// Write a function discountCategory(products, category, discount) that:----------------------------
+// - Applies discount (e.g., 0.2 = 20% off) to all products in the category
+// - Returns the total amount discounted across all products
+
+const products22 = [
+  { id: 1, name: "TV", price: 500, categories: ["electronics"] },
+  { id: 2, name: "Shirt", price: 30, categories: ["clothing"] },
+  {
+    id: 3,
+    name: "Headphones",
+    price: 100,
+    categories: ["electronics", "audio"],
+  },
+];
+
+function discountCategory22(products22, category, discount) {
+  let count = 0;
+  for (let i = 0; i < products22.length; i++) {
+    for (let j = 0; j < products22[i].categories.length; j++) {
+      if (products22[i].categories[j] === category) {
+        products22[i].price = products22[i].price * discount;
+        count++;
+      }
+    }
+  }
+  return products22;
+}
+
+console.log(discountCategory22(products22, "clothing", 2));
+
+// Write a function mergeUsers(users, userData) that returns:-----------------------------------
+// [
+//   { id: 1, name: "Alice", age: 25 },
+//   { id: 2, name: "Bob", age: 30 }
+// ]
+
+const users = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+];
+const userData = [
+  { userId: 1, age: 25 },
+  { userId: 2, age: 30 },
+];
+
+function mergeUsers(users, userData) {
+  let newarrobjject = [];
+  for (let i = 0; i < users.length; i++) {
+    for (let j = 0; j < userData.length; j++) {
+      if (users[i].id === userData[j].userId) {
+        newarrobjject.push(users[i]);
+        users[i].age = userData[j].age;
+      }
+    }
+  }
+  return newarrobjject;
+}
+
+console.log(mergeUsers(users, userData));
+
+// ### Exercise 12: Group By Property-----------------------------------------------------------------------------------
+// Create a function that uses reduce to group objects by a specified property.
+
+const studentsTest = [
+  { id: 1, name: "John", grade: "A" },
+  { id: 2, name: "Jane", grade: "B" },
+  { id: 3, name: "Jim", grade: "A" },
+  { id: 4, name: "Jill", grade: "C" },
+  { id: 5, name: "aakakak", grade: "C" },
+];
+// console.log(groupBy(students, 'grade'));
+/* Should output: 
+{
+  A: [{ id: 1, name: 'John', grade: 'A' }, { id: 3, name: 'Jim', grade: 'A' }],
+  B: [{ id: 2, name: 'Jane', grade: 'B' }],
+  C: [{ id: 4, name: 'Jill', grade: 'C' }]
+}
+*/
+
+function groupBy(studentsTest, gradess) {
+  let ARR = [];
+  for (let i = 0; i < studentsTest.length; i++) {
+    if (studentsTest[i].grade === gradess) {
+      ARR.push(studentsTest[i]);
+    }
+  }
+  return ARR;
+}
+console.log("------------------------------");
+console.log(groupBy(studentsTest, "C"));
+
+// ### Exercise 13: Advanced Data Transformation------------------------------------------------------------------------------------------
+// Write a function that takes an array of transaction objects and returns the total amount spent on each category, sorted by highest to lowest amount.
+
+const transactions = [
+  { id: 1, category: "Food", amount: 50 },
+  { id: 2, category: "Entertainment", amount: 100 },
+  { id: 3, category: "Food", amount: 30 },
+  { id: 4, category: "Transportation", amount: 70 },
+  { id: 5, category: "Entertainment", amount: 50 },
+];
+// console.log(categorizeExpenses(transactions));
+/* Should output: 
+[
+  { category: 'Entertainment', totalAmount: 150 },
+  { category: 'Food', totalAmount: 80 },
+  { category: 'Transportation', totalAmount: 70 }
+]
+*/
+
+function categorizeExpenses(transactions) {
+ 
+    let objstock={}
+    for (let i = 0; i < transactions.length; i++) {
+        if (objstock[transactions[i].category]) {
+            objstock[transactions[i].category]+=transactions[i].amount
+        }else{
+            objstock[transactions[i].category]=transactions[i].amount
+        }
+    }
+    return objstock
+}
+
+console.log(categorizeExpenses(transactions))
