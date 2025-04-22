@@ -305,7 +305,6 @@
 
 // console.log(arry);
 
-
 // for (let i = 0; i < arry.length-1; i++) {
 // for (let j = 0; j < arry.length-i-1; j++) {
 //   let temp;
@@ -313,16 +312,13 @@
 //   temp=arry[j]
 //   arry[j]=arry[j+1]
 //   arry[j+1]=temp
-//  }  
-// }  
+//  }
+// }
 // }
 
 // console.log(arry);
 
-
-
 // let mots = ["bonjour", "javascript", "array", "map", "exercice"];
-
 
 // let newr=mots.map((item)=>{
 //   return item.length>4
@@ -330,10 +326,7 @@
 
 // console.log(newr)
 
-
-
 // let animaux = ["chat", "chien", "tigre", "tortue", "lion"];
-
 
 // for (let i = 0; i < animaux.length; i++) {
 
@@ -344,31 +337,18 @@
 // });
 // }
 
-
 // const fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
-
 
 // let newcount={}
 
 // for (const fruit in fruits) {
 
-
 // }
-
-
-
-
 
 // Exercise 1: Create an array with five fruits, then add two more fruits at the end,
 // and remove the first fruit. Return the final array.
 
 // const fruits = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple'];
-
-
-
-
-
-
 
 // Exercise 1: Use map to create a new array where each number is multiplied by 2
 
@@ -384,38 +364,305 @@
 
 // console.log(doubleNumbers(pairarray1))
 
-
-
 // Exercise 2: Use filter and map together to get the names of people over 18
 
-let aer=([
+let aer = [
   { name: "Alice", age: 25 },
   { name: "Bob", age: 17 },
   { name: "Charlie", age: 30 },
-  { name: "David", age: 16 }
-]);
+  { name: "David", age: 16 },
+];
 
 function getAdultNames(people) {
-return people.filter(person=>person.age>18).map((person=>person.name))
+  return people
+    .filter((person) => person.age > 18)
+    .map((person) => person.name);
 }
 
-console.log(getAdultNames(aer))
+console.log(getAdultNames(aer));
 
 // Exercise 3: Use reduce to find the most expensive product in an array
 
-let nes=[
+let nes = [
   { name: "Laptop", price: 1200 },
   { name: "Phone", price: 800 },
   { name: "TV", price: 1500 },
-  { name: "Headphones", price: 200 }
-]
+  { name: "Headphones", price: 200 },
+];
 
 function findMostExpensive(products) {
- return products.reduce((a,b)=>{
-  return a.price>b.price?a:b
- })
+  return products.reduce((a, b) => {
+    return a.price > b.price ? a : b;
+  });
 }
 
-console.log(findMostExpensive(nes))
+console.log(findMostExpensive(nes));
 
+// let array=[1,2,3]
 
+// for (let i = 0; i < array.length; i++) {
+// let a=12
+// }
+
+// console.log(a)
+
+// console.log("1")
+
+// setTimeout(() => {
+//   console.log("2")
+
+// }, 2000);
+
+// console.log("3")
+
+const movies = [
+  { title: "Inception", year: 2010, genre: "Science-fiction", collection: 800 },
+  { title: "Titanic", year: 1997, genre: "Romance", collection: 2187 },
+  { title: "Avengers", year: 2012, genre: "Action", collection: 1500 },
+  {
+    title: "Interstellar",
+    year: 2014,
+    genre: "Science-fiction",
+    collection: 675,
+  },
+  { title: "The Notebook", year: 2004, genre: "Romance", collection: 150 },
+  { title: "Mad Max: Fury Road", year: 2015, genre: "Action", collection: 378 },
+];
+
+// {
+//   "Science-fiction": [
+//       { title: "Inception", year: 2010, collection: 800 },
+//       { title: "Interstellar", year: 2014, collection: 675 }
+//   ],
+//   "Romance": [
+//       { title: "Titanic", year: 1997, collection: 2187 },
+//       { title: "The Notebook", year: 2004, collection: 150 }
+//   ],
+//   "Action": [
+//       { title: "Avengers", year: 2012, collection: 1500 },
+//       { title: "Mad Max: Fury Road", year: 2015, collection: 378 }
+//   ]
+// }
+
+function names() {
+  let newobjcts = {};
+  for (let i = 0; i < movies.length; i++) {
+    if (newobjcts[movies[i].genre]) {
+      newobjcts[movies[i].genre].push({ title: movies[i].title });
+    } else {
+      newobjcts[movies[i].genre] = [{ title: movies[i].title }];
+    }
+  }
+  return newobjcts;
+}
+
+console.log("eeeeeeeeeeeeeeeeeeeeeeeee");
+console.log(names());
+
+let stades = [
+  (stade1 = {
+    name: "bernabio",
+    location: "madrid",
+    country: "spain",
+    capacity: 72000,
+  }),
+  (stade2 = {
+    name: "campno",
+    location: "barcelona",
+    country: "spain",
+    capacity: 80000,
+  }),
+  (stade3 = {
+    name: "anfield",
+    location: "liverpool",
+    country: "england",
+    capacity: 90000,
+  }),
+  (stade3 = {
+    name: "alians arena",
+    location: "munich",
+    country: "germany",
+    capacity: 63000,
+  }),
+];
+
+console.log("rrrrrrrrrrrrrrrrrrrrr");
+
+function getLMaxx() {
+  let max = stades[0].capacity;
+  for (let i = 0; i < stades.length; i++) {
+    if (max < stades[i].capacity) {
+      max = stades[i].capacity;
+    }
+  }
+  return max;
+}
+
+console.log(getLMaxx());
+
+// var newsp={}
+// for (let i = 0; i < stades.length; i++) {
+// if (newsp[stades[i].country]) {
+//   newsp[stades[i].country].push({name:stades[i].name})
+// }  else{
+//   newsp[stades[i].country]=[{name:stades[i].name}]
+
+// }
+// // return newsp
+// console.log(newsp)
+// }
+
+console.log("hhhhhhhhhhhhhhhhhhhhh");
+
+// let A=[11,2,11,34,77,1,2,7]
+// let B=[]
+// let sum=0
+// for (let i = 0; i < A.length; i++) {
+
+//   if (A[i]>10) {
+//     B.push(A[i])
+//   }else{
+//     sum+=A[i]
+//     if (sum>10) {
+//     B.push(sum)
+
+//     }
+//   }
+// }
+
+// console.log(B)
+
+// -- 20
+
+// -- SELECT COUNT(*)AS totalproduct,c.CategoryName
+// -- FROM `products`  p
+// -- JOIN categories c ON c.CategoryID=p.CategoryID
+// -- GROUP BY c.CategoryName
+// -- ORDER by totalproduct desc;
+
+// -- 21
+
+// -- SELECT COUNT(*) AS totalcustomers,c.Country,c.City
+// -- FROM customers c
+// -- GROUP BY c.Country,c.City;
+
+// -- 22
+
+// -- SELECT p.ProductID,p.ProductName,p.UnitsInStock,p.ReorderLevel
+// -- FROM `products` p
+// --  WHERE p.UnitsInStock<p.ReorderLevel;
+
+// -- 23
+
+// -- SELECT p.ProductID,p.ProductName,p.UnitsInStock,p.UnitsOnOrder,p.ReorderLevel ,p.Discontinued
+// -- FROM `products` p
+// -- WHERE p.UnitsInStock+p.UnitsOnOrder<p.ReorderLevel AND p.Discontinued=0;
+
+// -- 25
+
+// -- SELECT AVG(o.OrderID) AS average, o.ShipCountry
+// -- FROM `orders` o
+// -- GROUP BY o.ShipCountry
+// -- ORDER BY average desc
+// -- LIMIT 3;
+
+// -- 26
+
+const newwws = [
+  { title: "Inception", year: 2010, genre: "Science-fiction", collection: 800 },
+  { title: "Titanic", year: 1997, genre: "Romance", collection: 2187 },
+  { title: "Avengers", year: 2012, genre: "Action", collection: 1500 },
+  {
+    title: "Interstellar",
+    year: 2014,
+    genre: "Science-fiction",
+    collection: 675,
+  },
+  { title: "The Notebook", year: 2004, genre: "Romance", collection: 150 },
+  { title: "Mad Max: Fury Road", year: 2015, genre: "Action", collection: 378 },
+];
+
+let newabject = {};
+for (let i = 0; i < newwws.length; i++) {
+  console.log(newwws[i].genre);
+  if (newabject[newwws[i].genre]) {
+    newabject[newwws[i].genre].push({ title: newwws[i].title });
+  } else {
+    newabject[newwws[i].genre] = [{ title: newwws[i].title }];
+  }
+}
+
+console.log(newabject);
+
+const cc = ["&", "aAA", "a", "b", "cc"];
+const dd = ["a", "b"];
+
+// let newY=[]--------------------------------
+// let unique=[]
+
+// for (let i = 0; i < cc.length; i++) {
+// newY.push(cc[i])
+// }
+
+// for (let i = 0; i < dd.length; i++) {
+//   newY.push(dd[i])
+//   }
+
+// for (let i = 0; i < newY.length; i++) {
+//   let count=0
+// for (let j = 0; j < newY.length; j++) {
+//   if (newY[i]===newY[j]) {
+//     count ++
+//   }
+// }
+// if (count===1) {
+//   unique.push(newY[i])
+
+// }
+// }
+// console.log(unique)
+
+// let neee=[]------------------------------------
+
+// for (let i = 0; i < cc.length; i++) {
+//   var isduplicate=false;
+// for (let j = 0; j < dd.length; j++) {
+
+// if (cc[i]===dd[j]) {
+//   isduplicate=true
+//   break
+// }
+// }
+// if (!isduplicate) {
+// neee.push(cc[i])
+// }
+// }
+
+// console.log(neee)
+
+// smallest min paire
+
+let arr6 = [6, 2, 5, 8];
+
+let min = arr6[0];
+let min2 = arr6[0];
+let min3 = arr6[0];
+
+for (let i = 0; i < arr6.length; i++) {
+  if (arr6[i] % 2 === 0 && arr6[i] < min) {
+    min = arr6[i];
+  }else if (arr6[i] % 2 === 0 && arr6[i] < min2 && arr6[i]!==min) {
+    min2 = arr6[i];
+    
+  }
+}
+
+console.log(min,min2);
+
+// const arr1 = ["apple", "banana", "orange", "apple"];
+// const arr2 = ["banana", "kiwi", "apple"];
+
+// for (let i = 0; i < array.length; i++) {
+//   const element = array[i];
+
+// }
