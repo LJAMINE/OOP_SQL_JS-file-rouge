@@ -114,3 +114,41 @@ JOIN utilisateurs u ON u.id = p.client_id
 WHERE f.paye = 1
 GROUP BY u.nom
 HAVING depenses_totales > 10000;
+
+
+
+-- 🔹 Évaluations & Qualité
+-- Afficher la note moyenne obtenue par chaque freelance.
+SELECT AVG(e.note),u.nom
+FROM `evaluations` e 
+JOIN missions m ON m.id=e.mission_id
+JOIN offres o ON o.id=m.offre_id
+JOIN utilisateurs u ON u.id=o.freelance_id
+GROUP BY u.nom;
+
+-- Lister les missions ayant une évaluation inférieure à 3 avec le commentaire associé.
+SELECT m.id AS mission_id, e.note, e.commentaire
+FROM missions m 
+INNER JOIN evaluations e ON e.mission_id=m.id
+WHERE e.note<=3;
+
+-- Afficher le top 5 des freelances les mieux notés (note moyenne).
+
+SELECT AVG(e.note),u.nom FROM `evaluations` e JOIN missions m ON m.id=e.mission_id JOIN offres o ON o.id=m.offre_id JOIN utilisateurs u ON u.id=o.freelance_id GROUP BY u.nom LIMIT 5;
+
+
+
+-- 🔹 Analyse avancée
+-- Afficher les projets sans offres reçues.
+SELECT * FROM `projets` LEFT JOIN offres ON offres.projet_id=projets.id WHERE offres.projet_id is null;
+
+
+-- Afficher les freelances ayant travaillé sur des projets dans au moins 2 catégories différentes.
+SELECT u.nom, COUNT(DISTINCT c.id) AS nbcategories
+FROM utilisateurs u
+INNER JOIN offres o ON o.freelance_id = u.id
+INNER JOIN projets p ON p.id = o.projet_id
+INNER JOIN projet_categorie pc ON pc.projet_id = p.id
+INNER JOIN categories c ON c.id = pc.categorie_id
+GROUP BY u.nom
+HAVING nbcategories >= 2;
