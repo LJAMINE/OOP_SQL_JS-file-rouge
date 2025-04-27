@@ -260,5 +260,6 @@ function noduplicate(stades) {
 console.log(noduplicate(stades))
 
 
-// **4. Find the stadium with the highest subscriptions (return the full object).
+
+
 
