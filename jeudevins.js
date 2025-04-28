@@ -584,16 +584,85 @@ const transactions = [
 */
 
 function categorizeExpenses(transactions) {
- 
-    let objstock={}
-    for (let i = 0; i < transactions.length; i++) {
-        if (objstock[transactions[i].category]) {
-            objstock[transactions[i].category]+=transactions[i].amount
-        }else{
-            objstock[transactions[i].category]=transactions[i].amount
-        }
+  let objstock = {};
+  for (let i = 0; i < transactions.length; i++) {
+    if (objstock[transactions[i].category]) {
+      objstock[transactions[i].category] += transactions[i].amount;
+    } else {
+      objstock[transactions[i].category] = transactions[i].amount;
     }
-    return objstock
+  }
+  return objstock;
 }
 
-console.log(categorizeExpenses(transactions))
+console.log(categorizeExpenses(transactions));
+
+// console.log("aaaa");
+// setTimeout(() => {
+//   console.log("bbbb");
+// }, 3000);
+// console.log("cccc");
+
+// ### Exercise 12: Group By Property-----------------------------------------------------------------------------------
+// Create a function that uses reduce to group objects by a specified property.
+
+const haritma3rafch = [
+  { id: 1, name: "John", grade: "A" },
+  { id: 2, name: "Jane", grade: "B" },
+  { id: 3, name: "Jim", grade: "A" },
+  { id: 4, name: "Jill", grade: "C" },
+  { id: 5, name: "aakakak", grade: "C" },
+];
+// // console.log(groupBy(students, 'grade'));
+// /* Should output:
+// {
+//   A: [{ id: 1, name: 'John', grade: 'A' }, { id: 3, name: 'Jim', grade: 'A' }],
+//   B: [{ id: 2, name: 'Jane', grade: 'B' }],
+//   C: [{ id: 4, name: 'Jill', grade: 'C' }]
+// }
+
+function groupByharit(haritma3rafch, grade) {
+  let newsvar = [];
+  for (let i = 0; i < haritma3rafch.length; i++) {
+      if (haritma3rafch[i].grade === grade) {
+        newsvar.push(haritma3rafch[i])
+      }
+  }
+  return newsvar
+}
+
+console.log("zzzzzzzzzzzzzzzzzzzzzz")
+console.log(groupByharit(haritma3rafch,"C"))
+
+
+
+
+let usersss=[
+{name:"joh",age:30},
+{name:"aaa",age:12},
+{name:"zkzkz",age:33},
+{name:"nnnn",age:24},
+]
+
+
+// for (let i = 0; i < usersss.length; i++) {
+
+//   if (usersss[i].age<18) {
+//     console.log("small 18")
+//     console.log(usersss[i])
+//   }else if (usersss[i].age>18) {
+//     console.log("bigger 18")
+
+//     console.log(usersss[i])
+    
+//   }else if (usersss[i].age>30) {
+//     console.log("bigger 30")
+
+//     console.log(usersss[i])
+    
+//   }else{
+    
+//   }
+  
+// }
+

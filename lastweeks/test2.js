@@ -1,24 +1,23 @@
 // 1. Find the Most Frequent Item in an Array
 
-const arr = [1, 2, 3, 3, 3, 4, 5];
+const arr = [1, 2, 2, 2, 3, 4, 5];
 
 function findRepeatedNumber(array) {
-  var stock = {};
-  var countmax = 0;
-  var valeurrepeated = 0;
+  let stock = {};
+  let maxCount = 0;
+  let valueRepeated;
   for (let i = 0; i < array.length; i++) {
     if (stock[array[i]]) {
       stock[array[i]]++;
     } else {
       stock[array[i]] = 1;
     }
-
-    if (stock[array[i]] > countmax) {
-      countmax = stock[array[i]];
-      valeurrepeated = array[i];
+    if (maxCount < stock[array[i]]) {
+      maxCount = stock[array[i]];
+      valueRepeated = array[i];
     }
   }
-  return valeurrepeated;
+  return valueRepeated;
 }
 
 console.log(findRepeatedNumber(arr));
@@ -49,27 +48,27 @@ console.log(sortarray(students));
 
 // 3. Find the elements that exist in both arrays.
 
-const arr1 = [1, 2, 3, 4, , 10, 5];
-const arr2 = [4, 5, 6, 7, 10, 8];
+const arr1 = [1, 2, 3, 4, 10, 5];
+const arr2 = [4, 1, 5, 6, 7, 10, 8];
 
 function intersection(array1, array2) {
-  let newarray = [];
+  let stockarray = [];
   let doublon = [];
-
   for (let i = 0; i < array1.length; i++) {
-    newarray.push(array1[i]);
+    stockarray.push(array1[i]);
   }
   for (let i = 0; i < array2.length; i++) {
-    newarray.push(array2[i]);
+    stockarray.push(array2[i]);
   }
 
-  for (let i = 0; i < newarray.length; i++) {
-    for (let j = i + 1; j < newarray.length; j++) {
-      if (newarray[j] === newarray[i]) {
-        doublon.push(newarray[j]);
+  for (let i = 0; i < stockarray.length; i++) {
+    for (let j = i + 1; j < stockarray.length; j++) {
+      if (stockarray[i] === stockarray[j]) {
+        doublon.push(stockarray[i]);
       }
     }
   }
+
   return doublon;
 }
 
@@ -96,7 +95,6 @@ function Nested(data) {
       sum += Nested(data[key]);
     }
   }
-
   return sum;
 }
 
@@ -126,6 +124,12 @@ console.log(longest(people));
 // 6. Find Missing Numbers in a Sequence
 
 const numbers = [1, 2, 4, 5, 6, 8];
+let miss = [];
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] + 1 !== numbers[i + 1]) {
+    console.log(numbers[i] + 1);
+  }
+}
 
 // 7. Flatten an Array of Objects
 
@@ -140,3 +144,105 @@ const arro = [
 const arr12 = [1, 2, 3];
 const arr23 = [2, 3, 4];
 const arr33 = [3, 4, 5];
+
+function findunique(ar1, ar2, ar3) {
+  var newstock = [];
+  var unique = [];
+  for (let i = 0; i < ar1.length; i++) {
+    newstock.push(ar1[i]);
+  }
+  for (let i = 0; i < ar2.length; i++) {
+    newstock.push(ar2[i]);
+  }
+
+  for (let i = 0; i < ar3.length; i++) {
+    newstock.push(ar3[i]);
+  }
+
+  for (let i = 0; i < newstock.length; i++) {
+    let count=0
+   for (let j = 0; j < newstock.length; j++) {
+    if (newstock[j] == newstock[i]) {
+      count++
+
+    }    
+   }
+   if (count===1) {
+    unique.push(newstock[i]);
+    
+   }
+  }
+  return unique;
+}
+console.log("'''''''''''''''''''''''''''''''''''''''''''''");
+
+console.log(findunique(arr12, arr23, arr33));
+
+console.log("'''''''''''''''''''''''''''''''''''''''''''''");
+// -----------------------------------------------------------------
+let arraysaziz = [1, 2, 22, 3, 7, 9, 11];
+var sum = 0;
+
+for (let i = 0; i < arraysaziz.length; i=i+3) {
+
+if (arraysaziz[i+1]) {
+  sum=arraysaziz[i]+arraysaziz[i+1]
+  arraysaziz[i+2]=sum
+}
+}
+console.log(arraysaziz);
+
+// ------------------------------------------------------
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 1 };
+
+let enwobj = {};
+// let sum = 0;
+
+for (const key in obj1) {
+  enwobj[key] = obj1[key];
+  for (const keyj in obj2) {
+    if (enwobj[keyj] === enwobj[key]) {
+      enwobj[keyj] = obj1[key] + obj2[keyj];
+    } else {
+      enwobj[keyj] = obj2[keyj];
+    }
+  }
+}
+
+// console.log(enwobj);
+
+let copie = ["a", "b", "c", "a", "a", "c"];
+let objectss = {};
+let count = 0;
+for (let i = 0; i < copie.length; i++) {
+  if (objectss[copie[i]]) {
+    // count++;
+    objectss[copie[i]]++;
+  } else {
+    objectss[copie[i]] = 1
+  }
+}
+console.log("'''''''''''''''''''''''''''''''''''''''''''''");
+
+console.log(objectss);
+
+let abderazak = ["eat", "ate", "tea", "tde", "dte", "bta"];
+
+function sortArray(array) {
+
+  let newarray=[]
+ array.forEach(element => {
+  for (let i = 0; i < element.length; i++) {
+
+    if (element[i]===element[i+1]) {
+    }else{
+      newarray.push(element)
+      
+    }
+  }
+});
+return newarray
+}
+
+console.log(sortArray(abderazak));

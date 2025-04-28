@@ -1,13 +1,9 @@
 <?php
 
-interface ReservableInterface
+interface ReservableInterface44
 {
-
-
-    public function reserver(Client44 $client, DateTime $dateDebut, int $nbJours);
+    public function reserver(Client44 $client, DateTime $dateDebut, int $nbJours): Reservation44;
 }
-
-
 
 abstract class Vehicule44
 {
@@ -15,130 +11,121 @@ abstract class Vehicule44
     protected string $immatriculation;
     protected string $marque;
     protected string $modele;
-    protected string $prixJour;
-    protected bool $disponible = true;
+    protected float $prixJour;
+    protected  bool $disponible = true;
+    public function __construct($id, $immatriculation, $marque, $modele, $prixJour, $disponible)
+    {
+
+        $this->id = $id;
+        $this->immatriculation = $immatriculation;
+        $this->marque = $marque;
+        $this->modele = $modele;
+        $this->prixJour = $prixJour;
+        $this->disponible = $disponible;
+    }
 
     public function afficherDetails()
     {
-        echo "{$this->immatriculation}{$this->marque}{$this->modele}{$this->prixJour}{$this->disponible} ";
+        echo "{$this->immatriculation}{$this->marque}{$this->modele}{$this->prixJour}";
     }
 
-    public function calculerPrix(int $jours)
+    public function calculerPrix(int $jours): float
     {
         return $this->prixJour * $jours;
     }
     public function estDisponible(): bool
     {
-        if ($this->disponible) {
-
-          return  $this->disponible = true;
-        } else {
-            return  $this->disponible = false;
-        }
+        return $this->disponible;
     }
-
-
-    abstract public function getType(): string;
+    abstract public function  getType(): string;
 }
 
-class Voiture44 extends Vehicule44 implements ReservableInterface
+class Voiture44 extends Vehicule44  implements ReservableInterface44
 {
-    public $nbPortes;
-    public $transmission;
 
-    public function __construct($nbPortes, $transmission)
+    public function __construct($id, $immatriculation, $marque, $modele, $prixJour, $disponible, $nbPortes, $transmission)
     {
+        parent::__construct($id, $immatriculation, $marque, $modele, $prixJour, $disponible);
         $this->nbPortes = $nbPortes;
         $this->transmission = $transmission;
     }
-    public function reserver(Client44 $client, DateTime $dateDebut, int $nbJours) {
-     
-         
+    public $nbPortes;
+    public $transmission;
+    public function reserver(Client44 $client, DateTime $dateDebut, int $nbJours): Reservation44
+    {
+        return new Reservation44($this,$client,  $dateDebut,  $nbJours);
+    }
+    public function  getType(): string
+    {
+        return "this is a voiture";
     }
     public function afficherDetails()
     {
-        echo "{$this->nbPortes}{$this->transmission} ";
-    }
-
-
-    public function getType():string
-    {
-     return  "this is a voiture";
+        parent::afficherDetails();
+        echo "{$this->nbPortes}{$this->transmission}";
     }
 }
 
-class Moto44 extends Vehicule44  implements ReservableInterface
+class Moto44 extends Vehicule44  implements ReservableInterface44
 {
     public $cylindree;
-    public function reserver(Client44 $client, DateTime $dateDebut, int $nbJours) {}
 
-
+    public function __construct($id, $immatriculation, $marque, $modele, $prixJour, $disponible, $cylindree)
+    {
+        parent::__construct($id, $immatriculation, $marque, $modele, $prixJour, $disponible);
+        $this->cylindree = $cylindree;
+    }
+    public function reserver(Client44 $client, DateTime $dateDebut, int $nbJours): Reservation44
+    {
+        return new Reservation44();
+    }
+    public function  getType(): string
+    {
+        return "this is a moto";
+    }
     public function afficherDetails()
     {
-        echo "{$this->cylindree} ";
-    }
-
-
-    public function getType():string
-    {
-     return  "this is a moto";
+        parent::afficherDetails();
+        echo "{$this->nbPortes}{$this->transmission}";
     }
 }
-
-class Camion44 extends Vehicule44 implements ReservableInterface
-{
-    public $capaciteTonnage;
-    public function reserver(Client44 $client, DateTime $dateDebut, int $nbJours) {}
-
-    public function afficherDetails()
-    {
-        echo "{$this->capaciteTonnage}";
-    }
-
-
-    public function getType():string
-    {
-     return  "this is a Camion44";
-    }
-}
-
 
 
 abstract class Personne44
 {
-    protected string $prenom;
-    protected string $nom;
-    protected string $email;
+    protected $nom;
+    protected $prenom;
+    protected $email;
 
-    
-
-    abstract public function afficherProfil();
+    public function __construct($nom, $prenom, $email)
+    {
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->email = $email;
+    }
+    abstract public function  afficherProfil();
 }
+
 
 class Client44 extends Personne44
 {
 
-    public int $numeroClient;
-    public array $reservations = [];
-    public function __construct($prenom, $nom, $email, $numeroClient)
+    public $numeroClient;
+    public $reservations = [];
+
+    public function __construct($nom, $prenom, $email, $numeroClient)
     {
-        parent::__construct($prenom, $nom, $email);
+        parent::__construct($nom, $prenom, $email);
         $this->numeroClient = $numeroClient;
     }
-    public function afficherProfil()
+    public function  afficherProfil() {}
+    public function  ajouterReservation(Reservation44 $r)
     {
-        echo " {$this->prenom}{$this->nom}{$this->email} ";
-    }
-    public function getHistorique()
-    {
-        foreach ($this->reservations as $item) {
-            echo $item;
-        }
-    }
-    public function ajouterReservation(Reservation44 $r)
-    {
-
         $this->reservations[] = $r;
+    }
+    public function  getHistorique()
+    {
+        return $this->reservations;
     }
 }
 
@@ -150,66 +137,91 @@ class Agence44
     public $vehicules = [];
     public $clients  = [];
 
-    use LoggerTrait44;
-
-
     public function __construct($nom, $ville)
     {
         $this->nom = $nom;
         $this->ville = $ville;
     }
 
-    public function ajouterVehicule(Vehicule44 $v)
+    public function  ajouterVehicule(Vehicule44 $v)
     {
         $this->vehicules[] = $v;
     }
-
-    public function rechercherVehiculeDisponible(string $type) {}
-
-    public function enregistrerClient(Client44 $c)
+    public function  rechercherVehiculeDisponible(string $type) {}
+    public function  enregistrerClient(Client44 $c)
     {
         $this->clients[] = $c;
     }
-function logAction(string $message){
-        echo "this logger action funct {$message}";
+
+    public function faireReservation(Client44 $client, ReservableInterface44  $v, DateTime $dateDebut, int $nbJours): Reservation44 {
+        $reservation=$v->reserver($client,$dateDebut,$nbJours);
+        $client->ajouterReservation($reservation);
+        return $reservation;
     }
-
-
-
-    public function faireReservation(Client44 $client, Vehicule44 $v, DateTime $dateDebut, int $nbJours):Reservation{}
 }
 
 class Reservation44
 {
-    public Vehicule44  $vehicule;
-    public Client44  $client;
+    public Vehicule44 $vehicule44;
+    public Client44 $client;
+    public string $dateDebut;
+    public int $nbJours;
+    public  $statut ;
 
-    public $dateDebut;
-    public $nbJours;
-    public $statut=null;
-
-       public function __construct($dateDebut,$nbJours,$statut){
-$this->dateDebut=$dateDebut;
-$this->nbJours=$nbJours;
-$this->statut=$statut;
-       }
-
-    public function calculerMontant() {
-return $this->nbJours*$this->vehicule->calculerPrix();
+    public function __construct($vehicule44, $client, $dateDebut, $nbJours)
+    {
+        $this->vehicule44 = $vehicule44;
+        $this->client = $client;
+        $this->dateDebut = $dateDebut;
+        $this->nbJours = $nbJours;
+        $this->statut = 'confirmer';
     }
-    public function confirmer() {
-        return $this->statut=true;
-    }
-    public function annuler() {
-        return $this->statut=false;
 
+   
+
+    public function calculerMontant()
+    {
+        return $this->vehicule44->calculerPrix($this->nbJours);
+    }
+
+    public function confirmer()
+    {
+        return $this->statut = "confirmée";
+    }
+    public function annuler()
+    {
+        return $this->statut = 'annulée';
+    }
+}
+
+
+trait LoggerTrait
+{
+    public function logAction(string $message)
+    {
+        echo "{$this->message}";
     }
 }
 
 
 
- Trait LoggerTrait44{
-    function logAction(string $message){
-        echo "this logger action funct {$message}";
-    }
- }
+
+$agenceParis=new Agence44("paris123","paris");
+$agencecasa=new Agence44("casab","casablance");
+
+$voit1=new Voiture44(1,"amam","amama","aallaa",1.2,true,123,"amamaa");
+$mo2t=new Voiture44(2,"mot","mot","mot",1.2,true,123,"mot");
+
+
+$agencecasa->ajouterVehicule($voit1);
+$agenceParis->ajouterVehicule($mo2t);
+
+$client1=new Client44("amine","lm","amine@gmil.com",123);
+$client2=new Client44("aziz","lm","aziz@gmil.com",123);
+
+$agenceParis->enregistrerClient($client1);
+$agencecasa->enregistrerClient($client2);
+
+$reservation=new Reservation44($voit1,$client1,"12-12-2028",12);
+$reservation->confirmer();
+$reservation->annuler();
