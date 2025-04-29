@@ -798,31 +798,65 @@ console.log(getEmployeesByProject(employees));
 
 // List employees who have more than 2 skills
 
-
 function getEmployeesWithMoreThanTwoSkills(array) {
-    let stockarray = [];
-    
-    for (let i = 0; i < array.length; i++) {
-        let count = 0;
-        
+  let stockarray = [];
+
+  for (let i = 0; i < array.length; i++) {
+    let count = 0;
+
     for (let j = 0; j < array[i].skills.length; j++) {
-        if (array[i].skills[j]) {
-            count++;
-            
-        }
+      if (array[i].skills[j]) {
+        count++;
+      }
     }
     if (count > 2) {
-        stockarray.push(array[i]);
+      stockarray.push(array[i]);
     }
+  }
+  return stockarray;
 }
-  return stockarray
-}
 
-console.log(getEmployeesWithMoreThanTwoSkills(employees))
-
-
+console.log(getEmployeesWithMoreThanTwoSkills(employees));
 
 // Find employees whose last name starts with 'L'
+
+function getEmployeesByLastNameInitial(array) {
+  let stock = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].lastName[0] === "L") {
+      stock.push(array[i].lastName);
+    }
+  }
+  return stock;
+}
+console.log(getEmployeesByLastNameInitial(employees));
+
+const items = [
+  { category: "fruit", name: "apple" },
+  { category: "fruit", name: "banana" },
+  { category: "vegetable", name: "carrot" },
+];
+//   console.log(groupByCategory(items));
+// { fruit: [{ category: 'fruit', name: 'apple' }, { category: 'fruit', name: 'banana' }], vegetable: [{ category: 'vegetable', name: 'carrot' }] }
+
+function groupByCategory(array) {
+  let obj = {};
+  for (let i = 0; i < array.length; i++) {
+    if (obj[array[i].category]) {
+      obj[array[i].category].push({
+        category: array[i].category,
+        name: array[i].name,
+      });
+    } else {
+      obj[array[i].category] = [array[i]];
+    }
+  }
+  return obj;
+}
+
+// console.log(groupByCategory(items));
+
+//   Calculate the average salary per department
 
 // {
 //     id: 50,
@@ -840,43 +874,31 @@ console.log(getEmployeesWithMoreThanTwoSkills(employees))
 //     languages: ["French", "English", "Italian"],
 //   },
 
+function calculateAverageSalaryByDepartment(array) {
 
-function getEmployeesByLastNameInitial(array) {
-    let stock=[]
+    let departements={}
+
     for (let i = 0; i < array.length; i++) {
-if (array[i].lastName[0]==="L") {
-    stock.push(array[i].lastName)
-}       
-    }
-    return stock
-}
-console.log(getEmployeesByLastNameInitial(employees))
 
+        if (!departements[array[i].department]) {
+            departements[array[i].department]={
+                salaire:0,
+                count:0,
+            }
 
-
-
-
-
-const items = [
-    { category: 'fruit', name: 'apple' },
-    { category: 'fruit', name: 'banana' },
-    { category: 'vegetable', name: 'carrot' }
-  ];
-//   console.log(groupByCategory(items)); 
-  // { fruit: [{ category: 'fruit', name: 'apple' }, { category: 'fruit', name: 'banana' }], vegetable: [{ category: 'vegetable', name: 'carrot' }] }
-
-
-
-  function groupByCategory(array) {
-    let obj={}
-    for (let i = 0; i < array.length; i++) {
-        if (obj[array[i].category]) {
-            obj[array[i].category].push({category:array[i].category,name:array[i].name,})
-        }else{
-            obj[array[i].category]=[array[i]]
         }
+        departements[array[i].department].salaire+=array[i].salary
+        departements[array[i].department].count+=1
     }
-    return obj
-  }
+    
+    for (const key in departements) {
+        departements[key].avg=departements[key].salaire/departements[key].count
+    }
+    return departements
 
-  console.log(groupByCategory(items))
+  
+}
+
+console.log(calculateAverageSalaryByDepartment(employees));
+
+
