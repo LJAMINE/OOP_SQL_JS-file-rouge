@@ -760,463 +760,67 @@ const employees = [
     isActive: false,
     languages: ["French", "English", "Italian"],
   },
-  {
-    id: 51,
-    firstName: "Sophie",
-    lastName: "Leroy",
-    age: 31,
-    department: "Marketing",
-    position: "Responsable marketing digital",
-    salary: 52000,
-    skills: ["SEO", "Google Analytics", "Content Marketing", "Social Media"],
-    joinDate: "2021-01-05",
-    email: "sophie.leroy@company.com",
-    projects: ["Project Zeta"],
-    isActive: false,
-    languages: ["French", "English", "Italian"],
-  },
 ];
 
-// //   Count how many employees speak English
+//   List all unique department names
 
-// function countEnglishSpeakingEmployees(array) {
-//   let count = 0;
-//   for (let i = 0; i < array.length; i++) {
-//     for (let j = 0; j < array[i].languages.length; j++) {
-//       if (array[i].languages[j] === "English") {
-//         count++;
-//       }
-//     }
-//   }
-//   return count;
-// }
+// Function Name: getUniqueDepartments
+// Input: employees
+// Output: ["Développement", "Design", "Management", "Marketing"]
+// Expected Result: Returns an array of unique department names.
 
-// console.log(countEnglishSpeakingEmployees(employees));
+// function getUniqueDepartments(array) {
 
-// // Find all employees who work on "Project Gamma"
+//     let stock={}
 
-// function getEmployeesByProject(array) {
-//   let count = 0;
-//   let stockarray = [];
-//   for (let i = 0; i < array.length; i++) {
-//     for (let j = 0; j < array[i].projects.length; j++) {
-//       if (array[i].projects[j].includes("Project Gamma")) {
-//         stockarray.push(array[i]);
-//         count++;
-//       }
-//     }
-//   }
-//   return [stockarray, count];
-// }
-
-// console.log(getEmployeesByProject(employees));
-
-// // List employees who have more than 2 skills
-
-// function getEmployeesWithMoreThanTwoSkills(array) {
-//   let stockarray = [];
-
-//   for (let i = 0; i < array.length; i++) {
-//     let count = 0;
-
-//     for (let j = 0; j < array[i].skills.length; j++) {
-//       if (array[i].skills[j]) {
-//         count++;
-//       }
-//     }
-//     if (count > 2) {
-//       stockarray.push(array[i]);
-//     }
-//   }
-//   return stockarray;
-// }
-
-// console.log(getEmployeesWithMoreThanTwoSkills(employees));
-
-// // Find employees whose last name starts with 'L'
-
-// function getEmployeesByLastNameInitial(array) {
-//   let stock = [];
-//   for (let i = 0; i < array.length; i++) {
-//     if (array[i].lastName[0] === "L") {
-//       stock.push(array[i].lastName);
-//     }
-//   }
-//   return stock;
-// }
-// console.log(getEmployeesByLastNameInitial(employees));
-
-// const items = [
-//   { category: "fruit", name: "apple" },
-//   { category: "fruit", name: "banana" },
-//   { category: "vegetable", name: "carrot" },
-// ];
-// //   console.log(groupByCategory(items));
-// // { fruit: [{ category: 'fruit', name: 'apple' }, { category: 'fruit', name: 'banana' }], vegetable: [{ category: 'vegetable', name: 'carrot' }] }
-
-// function groupByCategory(array) {
-//   let obj = {};
-//   for (let i = 0; i < array.length; i++) {
-//     if (obj[array[i].category]) {
-//       obj[array[i].category].push({
-//         category: array[i].category,
-//         name: array[i].name,
-//       });
-//     } else {
-//       obj[array[i].category] = [array[i]];
-//     }
-//   }
-//   return obj;
-// }
-
-// // console.log(groupByCategory(items));
-
-// // Find employees who joined after 2020
-
-// function getEmployeesJoinedAfterYear(array, year) {
-// let stock=[]
-// let count =0
 //     for (let i = 0; i < array.length; i++) {
-//         var joinYear=new Date(array[i].joinDate).getFullYear()
-// if (joinYear>year) {
-//     stock.push(array[i])
-//     count++
-// }
-//     }
-// return  [stock,count]
-// }
 
-// // console.log(getEmployeesJoinedAfterYear(employees, 2020));
-
-// // // List employees who speak more than 2 languages
-
-// // function getMultilingualEmployees(array) {
-// //     let count=0
-// //     let stock=[]
-// //     for (let i = 0; i < array.length; i++) {
-
-// //         if (array[i].languages.length>2) {
-// //             stock.push(array[i])
-// //             count++
-// //         }
-// //     }
-// //     return [stock,count]
-// // }
-
-// // console.log(getMultilingualEmployees(employees))
-
-// // Find the most common skill among all employees
-
-// function getMostCommonSkill(array) {
-//   let count = 0;
-//   let stock = {};
-//   let maxcount = 0;
-//   let repeated = null;
-//   for (let i = 0; i < array.length; i++) {
-//     for (let j = 0; j < array[i].skills.length; j++) {
-//       if (stock[array[i].skills[j]]) {
-//         // count++
-//         stock[array[i].skills[j]]++;
-//       } else {
-//         stock[array[i].skills[j]] = 1;
-//       }
-//       if (maxcount < stock[array[i].skills[j]]) {
-//         maxcount = stock[array[i].skills[j]];
-//         repeated = array[i].skills[j];
+//       if (stock[array[i].department]) {
+//         stock[array[i].department]=(array[i].department)
+//       }else{
+//         stock[array[i].department]=[array[i].department]
 //       }
 //     }
-//   }
-//   return [stock, repeated];
+//     return stock
 // }
 
-// console.log(getMostCommonSkill(employees));
-
-// let arr = [1, 2, 3, 4, 4, 4, 4, 1, 1];
-
-// function get(array) {
-//   let stock = {};
-//   let maxcount = 0;
-//   let repeated = 0;
-//   for (let i = 0; i < array.length; i++) {
-//     if (stock[array[i]]) {
-//       stock[array[i]]++;
-//     } else {
-//       stock[array[i]] = 1;
-//     }
-//     if (maxcount < stock[array[i]]) {
-//       maxcount = stock[array[i]];
-//       repeated = array[i];
-//     }
-//   }
-//   return repeated;
-// }
-
-// console.log(get(arr));
-
-// // List employees with a salary above 60000
-
-// function getHighEarningEmployees(array) {
-//   // let stock=[]
-//   // for (let i = 0; i < array.length; i++) {
-
-//   //     if (array[i].salary>6000) {
-//   //         stock.push(array[i])
-//   //     }
-//   // }
-//   // return stock
-
-//   let val = array.filter((item) => {
-//     return item.salary > 60000;
-//   });
-
-//   return val;
-// }
-
-// console.log(getHighEarningEmployees(employees));
-
-// //    Find the longest-serving employee
-
-// // {
-// //     id: 50,
-// //     firstName: "Sophie",
-// //     lastName: "Leroy",
-// //     age: 31,
-// //     department: "Marketing",
-// //     position: "Responsable marketing digital",
-// //     salary: 52000,
-// //     skills: ["SEO", "Google Analytics", "Content Marketing", "Social Media"],
-// //     joinDate: "2021-01-05",
-// //     email: "sophie.leroy@company.com",
-// //     projects: ["Project Epsilon"],
-// //     isActive: false,
-// //     languages: ["French", "English", "Italian"],
-// //   },
-
-// function getLongestServingEmployee(array) {
-//    let yearNow=new Date().getFullYear()
-
-//     let max =yearNow-new Date(array[0].joinDate).getFullYear()
-//   for (let i = 0; i < array.length; i++) {
-//     year=new Date(array[i].joinDate).getFullYear()
-//     if (max<(yearNow-year)) {
-//         max=(yearNow-year)
-//         person=array[i]
-//     }
-
-//   }
-
-//   return person
-// }
-
-// console.log(getLongestServingEmployee(employees))
-
-console.log("osssssssssssssssssssssssssssssssssssssssssssssssssssama");
-// console.log(calculateAverageSalaryByDepartment(employees));
-console.log("osssssssssssssssssssssssssssssssssssssssssssssssssssama");
-
-// Medium - Department Operations
-
-//21 Count how many employees are in each department
-
-function countEmployeesByDepartment(array) {
-  let count = 0;
-  let stock = {};
-
-  for (let i = 0; i < array.length; i++) {
-    if (stock[array[i].department]) {
-      stock[array[i].department]++;
-    } else {
-      stock[array[i].department] = 1;
-    }
-  }
-  return stock;
-}
-
-console.log(countEmployeesByDepartment(employees));
-
-// 22- Find the department with the most employees
-
-function getLargestDepartment(array) {
-  var counmax = 0;
-  let stock = {};
-
-  for (let i = 0; i < array.length; i++) {
-    if (stock[array[i].department]) {
-      stock[array[i].department]++;
-      //   count++;
-    } else {
-      stock[array[i].department] = 1;
-      //   count = 1;
-    }
-
-    if (stock[array[i].department] > counmax) {
-      counmax = stock[array[i].department];
-    }
-  }
-  return [stock, counmax];
-}
-
-console.log(getLargestDepartment(employees));
-
-// 23- Calculate the total salary expenditure per department
-
-function calculateTotalSalaryByDepartment(array) {
-  let sum = 0;
-  let stock = {};
-
-  for (let i = 0; i < array.length; i++) {
-    if (!stock[array[i].department]) {
-      stock[array[i].department] = {
-        salairetotal: 0,
-      };
-    }
-
-    stock[array[i].department].salairetotal += array[i].salary;
-  }
-  return stock;
-}
-
-console.log(calculateTotalSalaryByDepartment(employees));
-
-// 24-  List all positions in the "Marketing" department
-
-function getPositionsInDepartment(array, depar) {
+function getUniqueDepartments(array) {
   let stock = [];
-
+  var count = 0;
   for (let i = 0; i < array.length; i++) {
-    if (array[i].department === depar) {
-      stock.push(array[i].position);
+    for (let j = 0; j < array.length; j++) {
+      if (array[j].department == array[i].department && !stock.includes(array[i].department)) {
+       stock.push(array[i].department)
+      }
     }
+  
   }
   return stock;
 }
 
-console.log(getPositionsInDepartment(employees, "Marketing"));
+console.log(getUniqueDepartments(employees));
 
-// 25- Find the average number of projects per employee by department
 
-function calculateAverageProjectsByDepartment(array) {
-  let stock = {};
 
-  for (let i = 0; i < array.length; i++) {
-    if (!stock[array[i].department]) {
-      stock[array[i].department] = {
-        projectTotal: 0,
-        count: 0,
-      };
-    }
-    stock[array[i].department].projectTotal += array[i].projects.length;
-    stock[array[i].department].count += 1;
 
-    stock[array[i].department].avg =
-      stock[array[i].department].projectTotal /
-      stock[array[i].department].count;
-  }
-  return stock;
-}
 
-console.log(calculateAverageProjectsByDepartment(employees));
-
-// Medium - Project Operations
-
-//  26 List all unique project names
-
-function getUniqueProjectNames(array) {
-  let unique = [];
-  let count = 0;
-
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array[i].projects.length; j++) {
-      if (!unique.includes(array[i].projects[j])) {
-        unique.push(array[i].projects[j]);
+function calculateAverageSalaryByDepartment(array) {
+    let departements = {};
+  
+    for (let i = 0; i < array.length; i++) {
+      if (!departements[array[i].department]) {
+        departements[array[i].department] = {
+          salaire: 0,
+          count: 0,
+        };
       }
+      departements[array[i].department].salaire += array[i].salary;
+      departements[array[i].department].count += 1;
     }
-  }
-  return unique;
-}
-
-console.log(getUniqueProjectNames(employees));
-
-// 27-  Count how many employees work on each project
-
-function countEmployeesByProject(array) {
-  let stock = {};
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array[i].projects.length; j++) {
-      if (stock[array[i].projects[j]]) {
-        stock[array[i].projects[j]]++;
-      } else {
-        stock[array[i].projects[j]] = 1;
-      }
+  
+    for (const key in departements) {
+      departements[key].avg = departements[key].salaire / departements[key].count;
     }
+    return departements;
   }
-  return stock;
-}
-
-console.log(countEmployeesByProject(employees));
-
-//28- Find projects with only one employee assigned
-
-function getSoloProjects(array) {
-  let stock = {};
-  let oneproject = [];
-
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array[i].projects.length; j++) {
-      if (stock[array[i].projects[j]]) {
-        stock[array[i].projects[j]]++;
-      } else {
-        stock[array[i].projects[j]] = 1;
-      }
-    }
-  }
-
-  for (const key in stock) {
-    if (stock[key] === 1) {
-      oneproject.push(key);
-    }
-  }
-  return oneproject;
-}
-console.log(getSoloProjects(employees));
-
-// 29 - List employees who work on multiple projects
-
-function getEmployeesWithMultipleProjects(array) {
-  let stock = {};
-  let arr = [];
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].projects.length > 1) {
-      arr.push(array[i].firstName);
-    }
-  }
-  return arr;
-}
-
-console.log(getEmployeesWithMultipleProjects(employees));
-
-// 30 - Find the most popular project (most employees)
-
-function getMostPopularProject(array) {
-  let stock = {};
-  let maxcount = 0;
-  let  mostpop;
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array[i].projects.length; j++) {
-      if (stock[array[i].projects[j]]) {
-        stock[array[i].projects[j]]++;
-      } else {
-        stock[array[i].projects[j]] = 1;
-      }
-
-      if (maxcount<stock[array[i].projects[j]]) {
-        maxcount=stock[array[i].projects[j]]
-mostpop=array[i].projects[j]
-      }
-    }
-
-  }
-  return [maxcount,mostpop]
-}
-
-console.log(getMostPopularProject(employees))
+  
