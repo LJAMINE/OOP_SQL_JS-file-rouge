@@ -209,6 +209,7 @@ for (let i = 0; i < arrayossama.length; i++) {
     uniquearr.push(arrayossama[i]);
   }
 }
+
 console.log(uniquearr);
 
 const people = [
