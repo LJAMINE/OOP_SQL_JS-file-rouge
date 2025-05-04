@@ -392,32 +392,395 @@ function sortProduct(array) {
 
 console.log(sortProduct(inventory));
 
-
-
 // Final total should include discounts for electronics only.
 
 const cart = [
   { name: "Headphones", category: "electronics", price: 100, quantity: 2 },
   { name: "T-shirt", category: "clothing", price: 30, quantity: 3 },
-  { name: "Monitor", category: "electronics", price: 200, quantity: 1 }
+  { name: "Monitor", category: "electronics", price: 200, quantity: 1 },
 ];
 
-
-
 function discounts(array) {
-let discount=0
+  let discount = 0;
   for (let i = 0; i < array.length; i++) {
-if (array[i].category==="electronics") {
-  discount+=array[i].price*0.9
-
-}    
+    if (array[i].category === "electronics") {
+      discount += array[i].price * 0.9;
+    }
   }
-  return discount
+  return discount;
 }
 
-console.log(discounts(cart))
+console.log(discounts(cart));
 
+// 🧠 1. Double the Numbers in an Array
 
+function doubleArray(array) {
+  let val = [];
+  for (let i = 0; i < array.length; i++) {
+    val.push(array[i] * 2);
+  }
+  return val;
+}
+
+console.log(doubleArray([1, 2, 3])); // Output: [2, 4, 6]
+
+// 🔁 2. Sum All Even Numbers in an Array
+
+function sumEvenNumbers(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      sum += arr[i];
+    }
+  }
+  return sum;
+}
+
+console.log(sumEvenNumbers([1, 2, 3, 4, 5, 6])); // Output: 12
+
+// 📚 3. Find the Oldest Person
+const people1 = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 32 },
+  { name: "Charlie", age: 29 },
+];
+
+function getolder(array) {
+  let max = array[0].age;
+  for (let i = 0; i < array.length; i++) {
+    if (max < array[i].age) {
+      max = array[i].name;
+    }
+  }
+  return max;
+}
+
+console.log(getolder(people1));
+
+// 📦 4. Group Numbers by Even and Odd
+
+function groupEvenOdd(array) {
+  let even = [];
+  let odd = [];
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 === 0) {
+      even.push(array[i]);
+    } else {
+      odd.push(array[i]);
+    }
+  }
+  return [even, odd];
+}
+
+console.log(groupEvenOdd([1, 2, 3, 4, 5]));
+
+// function arrayToObject(array) {
+//   let count=0;
+//   let obj = {};
+//   for (let i = 0; i < array.length; i++) {
+//     if (obj[array[i]]) {
+//       obj[array[i]].push({ item: array[i], time: count++ });
+//     } else {
+//       obj[array[i]] = { item: array[i], time: (count = 1) };
+//     }
+//   }
+//   return obj
+// }
+
+// console.log(arrayToObject(["a", "b", "a","c"]));
+
+// 🧩 1. Count Occurrences of Elements
+let fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
+// Output: { apple: 3, banana: 2, orange: 1 }
+
+function countItems(array) {
+  let obj = {};
+
+  for (let i = 0; i < array.length; i++) {
+    if (obj[array[i]]) {
+      obj[array[i]]++;
+    } else {
+      obj[array[i]] = 1;
+    }
+  }
+  return obj;
+}
+
+console.log(countItems(fruits));
+
+// 🧠 2. Filter Adults From a List
+
+const people2 = [
+  { name: "Alice", age: 17 },
+  { name: "Bob", age: 21 },
+  { name: "Charlie", age: 19 },
+];
+
+// Output: only those with age >= 18
+function getAdults(array) {
+  let stock = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].age >= 18) {
+      stock.push(array[i]);
+    }
+  }
+  return stock;
+}
+
+console.log(getAdults(people2));
+
+func = [1, [2, 3], [4, 5], 6];
+// Output: [1, 2, 3, 4, 5, 6]
+
+// 🎯 4. Create an Object from Two Arrays
+
+const keys = ["id", "name", "age"];
+const values = [1, "Alice", 25];
+
+// Output: { id: 1, name: "Alice", age: 25 }
+
+function zipToObject(keys, values) {
+  let obj = {};
+
+  for (let i = 0; i < keys.length; i++) {
+    obj[keys[i]] = values[i];
+  }
+  return obj;
+}
+console.log(zipToObject(keys, values));
+
+// 🧪 5. Remove Duplicates
+
+let newArray = [1, 2, 2, 3, 4, 4, 5];
+// Output: [1, 2, 3, 4, 5]
+
+function removeDuplicates(array) {
+  let newsA = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] == array[i + 1]) {
+      newsA.push(array[i]);
+    }
+  }
+  return newsA;
+}
+
+console.log(removeDuplicates(newArray));
+
+// 🧪6. get  unique
+
+let newArray2 = [1, 2, 2, 3, 4, 4, 5];
+
+function getUnique(array) {
+  let unique = [];
+  for (let i = 0; i < array.length; i++) {
+    let count = 0;
+    for (let j = 0; j < array.length; j++) {
+      if (array[i] === array[j]) {
+        count++;
+      }
+    }
+    if (count == 1) {
+      unique.push(array[i]);
+    }
+  }
+  return unique;
+}
+
+console.log(getUnique(newArray2));
+
+// ---------------------------------------------------------------------------------
+
+let arraytoreverse = ["aze", "aa", 1];
+
+function reverseaArray(array) {
+  let newOne = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    newOne.push(array[i]);
+  }
+  return newOne;
+}
+
+console.log(reverseaArray(arraytoreverse));
+
+// ---------------------------------------------------------------------------------
+let mot = "aze";
+
+function rev(array) {
+  let motreverse = "";
+  for (let i = array.length - 1; i >= 0; i--) {
+    motreverse += array[i];
+  }
+  return motreverse;
+}
+
+console.log(rev(mot));
+
+// -------------------------------------------------------------------
+let pali = "aa";
+
+function palindrome(array) {
+  let mot = "";
+  for (let i = array.length - 1; i >= 0; i--) {
+    mot += array[i];
+  }
+  return mot === pali;
+}
+
+console.log(palindrome(pali));
+
+// -------------------------------------------------------------------
+
+let arr = [1, 2, 3, 2, 1];
+
+function arraypalindrome(array) {
+  let stock = [];
+
+  for (let i = array.length - 1; i >= 0; i--) {
+    stock.push(array[i]);
+  }
+  return JSON.stringify(stock) === JSON.stringify(array);
+}
+
+console.log(arraypalindrome(arr));
+
+// -------------------------------------------------------------------secondmax
+
+let arrsecondMax = [-1, 0, -1, 0, -33];
+
+function secondMax(array) {
+  let max1 = -Infinity;
+  let max2 = -Infinity;
+  for (let i = 0; i < array.length; i++) {
+    if (max1 < array[i]) {
+      max2 = max1;
+      max1 = array[i];
+    } else if (max2 < array[i] && array[i] !== max1) {
+      max2 = array[i];
+    }
+  }
+  return max2;
+}
+
+console.log(secondMax(arrsecondMax));
+
+// -------------------------------------------------------------------duplicate
+
+let arrayduplicate = [1, 2, 3, 3, 4, 5, 5];
+
+function removeduplicate(array) {
+  let arrays = [];
+
+  for (let i = 0; i < array.length; i++) {
+    let count = 0;
+    for (let j = 0; j < array.length; j++) {
+      if (array[i] === array[j]) {
+        count++;
+      }
+    }
+    if (count == 1) {
+      arrays.push(array[i]);
+    }
+  }
+  return arrays;
+}
+
+console.log(removeDuplicates(arrayduplicate));
+
+let ARRAYMIN = [1, 3, 7, 9, 4, 2];
+
+function secondmIN(array) {
+  let min1 = Infinity;
+  let min2 = Infinity;
+
+  for (let i = 0; i < array.length; i++) {
+    if (min1 > array[i]) {
+      min2 = min1;
+      min1 = array[i];
+    } else if (array[i] > min1 && array[i] !== min1) {
+      min2 = array[i];
+    }
+  }
+  return min2;
+}
+
+console.log(secondmIN(ARRAYMIN));
+
+// find the missing number in an array
+
+let aze = [1, 2, 3, 5, 7];
+function missingNumber(array) {
+  for (let i = 0; i < array.length - 1; i++) {
+    if (array[i] + 1 != array[i + 1]) {
+      console.log(array[i] + 1);
+    }
+  }
+  // return null
+}
+
+console.log(missingNumber(aze));
+
+// Input: [1,2,2,3,2,4], 2 → Output: 3
+
+let inputs = [1, 2, 2, 3, 2, 4, 4];
+
+function findeme(array, a) {
+  let count = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === a) {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(findeme(inputs, 2));
+
+// how many time each one
+
+function contss(array) {
+  let stock = {};
+
+  for (let i = 0; i < array.length; i++) {
+    if (stock[array[i]]) {
+      stock[array[i]]++;
+    } else {
+      stock[array[i]] = 1;
+    }
+  }
+  return stock;
+}
+
+console.log(contss(inputs));
+
+// Print numbers from 1 to 30.
+// If divisible by 3, print "Fizz".
+// If divisible by 5, print "Buzz".
+// If divisible by both, print "FizzBuzz".
+
+for (let i = 1; i <= 30; i++) {
+  if (i % 3 === 0 && i % 5 === 0) {
+    console.log(`${i} FizzBuzz`);
+  } else if (i % 3 === 0) {
+    console.log(`${i} Fizz`);
+  } else if (i % 5 === 0) {
+    console.log(`${i} Buzz`);
+  } else {
+    console.log(i);
+  }
+}
+
+// Sum of digits of a number:
+// Input: 123 → Output: 6
+
+let yar = 123;
+let news=yar.toString()
+let sumq = 0;
+for (let i = 0; i < news.length; i++) {
+sumq+=parseInt(news[i])
+}
+
+console.log(sumq);
 
 
 
